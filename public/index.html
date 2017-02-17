@@ -1,0 +1,102 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>ISG | Ecommerce | Users Listing</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+	</head>
+
+	<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+  	<title>ISG | Ecommerce | Users Listing</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+	<body>
+		<div class="container" ng-app="myapp" ng-controller="userController">
+			<div class="row">
+			<h1>Users Listing</h1>
+				
+				<table class="table">
+					
+					<tr>
+						<th>NAME</th>
+						<th>EMAIL</th>
+						<th>PHONE</th>
+						<th>ACTION</th>			
+						<th>&nbsp;</th>		
+						<th>&nbsp;</th>			
+					</tr>
+					<form name="regForm">	
+					<tr>
+						<td><input class="form-control" ng-model="user.name" ng-minlength="3" ng-maxlength="8" required/>
+							<p ng-show="regForm.user.name.$error.minlength">Username is too short.</p>
+						    <!-- show an error if username is too long -->
+						    <p ng-show="regForm.user.name.$error.maxlength">Username is too long.</p>
+						    <!-- show an error if this isn't filled in -->
+						    <p ng-show="regForm.user.name.$error.required">Your username is required.</p>
+						</td>
+						<td><input class="form-control" ng-model="user.email"/></td>
+						<td><input class="form-control" ng-model="user.phone"/></td>
+						<td>
+							<button class="btn btn-primary" ng-click="addUser()">Add user</button></td>
+							<td><button class="btn btn-info" ng-click="updateUser()">Update</button>
+							<td><button class="btn btn-info" ng-click="resetFields()">Reset</button>
+						</td>			
+					</tr>
+					</form>
+					<tr ng-repeat="user in users">
+						<td>{{user.name}}</td>
+						<td>{{user.email}}</td>
+						<td>{{user.phone}}</td>
+						<td>
+							<button class="btn btn-danger btn-sm" ng-click="removeUser(user._id)">Delete</button></td>
+							<td><button class="btn btn-success btn-sm" ng-click="editUser(user._id)">Edit</button>
+						</td>
+					</tr>
+
+
+
+				</table>
+
+			</div>
+		</div>
+
+	</body>
+
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>-->
+	<script type="text/javascript" src="./js/controllers/app.js"></script>
+
+
+</html>
